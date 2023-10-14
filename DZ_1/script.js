@@ -20,21 +20,23 @@ function createCounter() {
   return {
     increment() {
       counter++;
-      return counter;
     },
     decrement() {
       counter--;
+    },
+    getCounter() {
       return counter;
     },
   };
 }
 
 const counter = createCounter();
-console.log(counter.increment());
-console.log(counter.decrement());
-console.log(counter.increment());
-console.log(counter.increment());
-console.log(counter.increment());
+counter.increment();
+counter.decrement();
+counter.increment();
+counter.increment();
+counter.increment();
+console.log(counter.getCounter());
 
 // 3) Дополнительное задание, выполняем только если проходили работу с DOM.
 // Напишите рекурсивную функцию findElementByClass, которая принимает корневой
@@ -43,13 +45,15 @@ console.log(counter.increment());
 // Пример
 
 function findElementByClass(element, myClass) {
+  if (element.classList.contains("my-class")) {
+    return element;
+  }
   const array = [...element.children];
   for (let i = 0; i < array.length; i++) {
-    if (array[i].className === myClass) {
+    if (array[i].classList.contains("my-class")) {
       return array[i];
-    } else {
-      return findElementByClass(array[i], myClass);
     }
+    return findElementByClass(array[i], myClass);
   }
 }
 

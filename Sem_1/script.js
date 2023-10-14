@@ -149,32 +149,30 @@
 // Пример использования:
 
 // function sumDigits(number) {
-//   let sum = 0;
-//   const num = String(number);
-//   const arrNums = num.split("");
-//   console.log(arrNums);
-//   arrNums.forEach((element) => {
-//     sum += Number(element);
-//   });
-//   console.log(sum);
-//   // if (num.lenght == 1) return sum + lastNumber;
-//   // return sum += number
+//   if (number < 10) {
+//     return number;
+//   }
+//   return (number % 10) + sumDigits(Math.floor(number / 10));
 // }
 
-// console.log(sumDigits(123)); // Ожидаемый результат: 6 (1 + 2 + 3)    123
+// console.log(sumDigits(123)); // Ожидаемый результат: 6 (1 + 2 + 3)
 // console.log(sumDigits(456789)); // Ожидаемый результат: 39 (4 + 5 + 6 + 7 + 8 + 9)
-let sum = 0;
 
-function sumDigits(number) {
-  sum += number % 10;
-  number = Math.floor(number / 10);
-  if (number < 10) {
-    let result = sum;
-    sum = 0;
-    return (result += number % 10);
+// возможно вводить 15 цифр после запятой (например 11.000000000000001), если вводится длиннее, то уже на программу это не влияет.
+
+function checkAccount(account) {
+  const account100 = account * 100;
+  if (account100 - Math.trunc(account100) > 0) {
+    console.log("Число содержит знаки после сотых");
+  } else {
+    console.log("число корректное!");
   }
-  return sumDigits(number);
 }
 
-console.log(sumDigits(123)); // Ожидаемый результат: 6 (1 + 2 + 3)
-console.log(sumDigits(456789)); // Ожидаемый результат: 39 (4 + 5 + 6 + 7 + 8 + 9)
+checkAccount(11); // "число корректное!"
+checkAccount(11.1); // "число корректное!"
+checkAccount(11.01); // "число корректное!"
+
+checkAccount(11.001); //"Число содержит цифры после сотых"
+checkAccount(11.000000000000001); //"Число содержит цифры после сотых"
+checkAccount(11.000007000000001); //"Число содержит цифры после сотых"
