@@ -1,0 +1,16 @@
+#myElement {
+    border: 1px solid black;
+    width: 550px;
+    height: 300px;
+    font-size: 60px;
+}
+
+.change-color {
+    background-color: red;
+    text-align: center;
+}
+
+.change-color::after {
+    content: '....УРАА! Хоть это работает нормально! :)';
+    color: greenyellow;
+}

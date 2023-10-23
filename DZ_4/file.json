@@ -1,0 +1,10 @@
+{
+    "name": "Slava",
+    "surname": "Gorbunov",
+    "age": 12,
+    "schooolTime": {
+        "hours": 12,
+        "place": "school"
+    }
+}
+
